@@ -1,0 +1,72 @@
+spring:
+  sql:
+    init:
+      mode: always
+  main:
+    banner-mode: off
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENT_ID}
+            client-secret: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GITHUB_CLIENT_SECRET}
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+  mail:
+    host: ${SPRING_MAIL_HOST}  # Alternative: smtp.gmail.com
+    port: ${SPRING_MAIL_PORT}   # Alternative: 587
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+
+application:
+  security:
+    jwt:
+      secret-key: ${APPLICATION_SECURITY_JWT_SECRET_KEY}
+      expiration: 604800000  # 7 days in milliseconds
+      refresh-token:
+        expiration: 604800000  # 7 days in milliseconds
+
+constants:
+  expiration:
+    min-time: 2
+
+availability:
+  split-time: 30
+
+stripe:
+  api:
+    key: ${STRIPE_API_KEY}
+  webhook:
+    key: ${STRIPE_WEBHOOK_KEY}
+  commission: 0.16
+
+frontend:
+  url: ${FRONTEND_URL}
+
+rapidapi:
+  base-url: https://list-of-all-countries-and-languages-with-their-codes.p.rapidapi.com
+  key: ${RAPIDAPI_KEY}
+  host: list-of-all-countries-and-languages-with-their-codes.p.rapidapi.com
+
+otp:
+  fixed: false
+
+runner:
+  enabled: true
+

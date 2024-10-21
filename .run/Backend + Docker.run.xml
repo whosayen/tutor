@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Backend + Docker" type="CompoundRunConfigurationType">
+    <toRun name="Backend" type="Application" />
+    <toRun name="Docker" type="docker-deploy" />
+    <method v="2" />
+  </configuration>
+</component>
